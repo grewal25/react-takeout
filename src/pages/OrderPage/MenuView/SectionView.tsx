@@ -1,30 +1,23 @@
-import React from 'react';
-import { Menu } from './Menu';
-//import { Menu } from './Menu';
+import { FC } from "react";
+import { Menu, MenuSection } from "../../../models/Menu";
 
-export interface SectionViewProps {
-  menues: Array<Menu>;
-}
-
-export const SectionView = ({ menues }: SectionViewProps) => {
+export const SectionView: FC<{section: MenuSection, items: Menu['items']}> = ({section, items}) => {
+  const {name, itemIds} = section;
   return (
-    <table data-testid="movie-table">
-      <thead>
-        <tr>
-          <th className="text-center">Rank</th>
-          <th>Name</th>
-          <th className="text-center">Year</th>
-          <th className="text-center">Rating</th>
-        </tr>
-      </thead>
-      <tbody>
-        {menues.map((menu, index) => (
-          <tr key={menu.id}>
-            <td className="text-center">{index + 1}</td>
-            <td>{menu.name}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <div>
+      <h2>{name}</h2>
+      {/* move inside a new component */}
+      <ul>
+        {itemIds.map((itemId, itemIdx) => {
+          const item = items[itemId];
+          return <li key={`${itemId}-${itemIdx}`}>
+            <h3>{item.name}</h3>
+            <p>{item.description}</p>
+            <p>{item.price}</p>
+          </li>
+        })}
+        
+      </ul>
+    </div>
   );
 };

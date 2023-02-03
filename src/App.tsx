@@ -1,15 +1,12 @@
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { HomePage, NotFoundPage } from './pages';
-//import { MenuView } from './pages/OrderPage/MenuView/MenuView';
+import { HomePage, NotFoundPage, OrderPage } from './pages';
 
 export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      {/* <Route path="/menu" element={<MenuView />} /> */}
+      <Route path="/order" element={<OrderPage />} />
       <Route path="*" element={<NotFoundPage />} />
-
     </Routes>
   );
 };

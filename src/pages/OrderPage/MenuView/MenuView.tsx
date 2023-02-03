@@ -1,29 +1,14 @@
-import React from 'react';
-import { Loading } from '../../../components';
-import { StringUtils } from '../../../utils';
-//import { MovieList } from './MovieList';
+import { Menu } from '../../../models/Menu';
 import { SectionView } from './SectionView';
-import { useMenu } from './useMenu';
 
-export const MenuView = () => {
-  const { isLoading, isError, error, menues } = useMenu();
-
-  if (isLoading) {
-    return <Loading />;
-  }
-
-  if (isError) {
-    return (
-      <main>
-        <h1>{StringUtils.errorToString(error)}</h1>
-      </main>
-    );
-  }
-
+export const MenuView: React.FC<{ menus: Menu }> = ({ menus }) => {
   return (
-    <main>
-      <h1>Top 10 menues Of All Time</h1>
-      <SectionView menues={menues} />
-    </main>
+    <div>
+      <h1>Our Menu</h1>
+      {menus.sectionIds.map((sectionId, sectionIdx) => {
+        const section = menus.sections[sectionId];
+        return <SectionView key={`${sectionIdx}-${sectionIdx}`} section={section} items={menus.items} />
+})}
+    </div>
   );
 };
