@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { CheckoutContext, CheckoutContextProps } from '../../OrderPage/OrderContext';
+import { CheckoutContext, CheckoutContextProps } from '../OrderContext';
 
 export const CheckoutView = () => {
   const { items, removeItem, total } =
