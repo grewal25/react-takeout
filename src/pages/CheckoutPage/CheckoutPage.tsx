@@ -1,7 +1,3 @@
-
-
-export const Checkout=()=>{
-    return(
-        <>Your Order </>
-    )
-}
+export const Checkout = () => {
+  return <>Your Order </>;
+};

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import { useEnv } from '../../../contexts';
 import { Menu } from '../../../models/Menu';
 import { EnvVar } from '../../../utils';
@@ -26,7 +27,7 @@ export const useMenu = () => {
         }
 
         const menus = (await response.json()) as Menu;
-        
+
         setMenus(menus);
         setIsLoading(false);
       } catch (e) {
