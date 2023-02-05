@@ -19,7 +19,6 @@ export const useMenu = () => {
       setIsError(null);
       try {
         const response = await fetch(`${apiUrl}/getMenu`);
-        console.log(response);
 
         if (!response.ok) {
           const message = `Error: ${response.status}`;

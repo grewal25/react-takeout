@@ -5,18 +5,10 @@ import {
   useMemo,
   useCallback,
 } from 'react';
-
-interface CheckoutItemProps {
-  name: string;
-  price: number;
-}
-
-export interface CheckoutContextProps {
-  items: CheckoutItemProps[];
-  addItem: (item: CheckoutItemProps) => void;
-  removeItem: (item: CheckoutItemProps) => void;
-  total: number;
-}
+import {
+  CheckoutContextProps,
+  CheckoutItemProps,
+} from '../CheckoutPage/CheckoutView/CheckoutView';
 
 export const CheckoutContext = createContext<CheckoutContextProps>(
   {} as CheckoutContextProps

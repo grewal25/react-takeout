@@ -1,7 +1,8 @@
 import { FC, useContext } from 'react';
 
 import { Menu, MenuSection } from '../../../models/Menu';
-import { CheckoutContextProps, CheckoutContext } from '../OrderContext';
+import { CheckoutContextProps } from '../../CheckoutPage/CheckoutView/CheckoutView';
+import { CheckoutContext } from '../OrderContext';
 
 import './SectionView.css';
 
@@ -9,7 +10,6 @@ export const SectionView: FC<{
   section: MenuSection;
   items: Menu['items'];
 }> = ({ section, items }) => {
-  
   const { name, itemIds } = section;
 
   const NumberUtils = {
@@ -17,13 +17,12 @@ export const SectionView: FC<{
       return number.toFixed(2);
     },
   };
-  
-  const { addItem } =
-    useContext<CheckoutContextProps>(CheckoutContext);
+
+  const { addItem } = useContext<CheckoutContextProps>(CheckoutContext);
 
   return (
-    <div className="">
-      <div>
+    <div>
+      <div className="section-text">
         <h2>{name}</h2>
         {/* move inside a new component */}
         <div className="section-top">
@@ -31,7 +30,12 @@ export const SectionView: FC<{
             {itemIds.map((itemId, itemIdx) => {
               const item = items[itemId];
               return (
-                <li key={`${itemId}-${itemIdx}`} onClick={() => addItem({price: item.price, name: item.name})}>
+                <li
+                  key={`${itemId}-${itemIdx}`}
+                  onClick={() =>
+                    addItem({ price: item.price, name: item.name })
+                  }
+                >
                   <h3>{item.name}</h3>
                   <p>{item.description}</p>
                   <p>${NumberUtils.formatAsMoney(item.price)}</p>

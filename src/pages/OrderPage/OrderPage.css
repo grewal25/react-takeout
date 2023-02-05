@@ -1,8 +1,11 @@
 .order-page-container {
+  background-color: #ffffff;
+  padding: 0 16px 16px 16px;
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  gap: 24px;
 }
 
 .remove-button {
@@ -42,11 +45,44 @@
   padding-top: 20px;
 }
 
-.list-order ul li {
+.list-order ul {
+  padding: 0;
+}
+
+.list-order li {
   padding-right: 10px;
   list-style-type: none;
 }
 
 .price {
-  padding: 12px;
+  padding-right: 12px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.item-name {
+  flex-basis: 80%;
+}
+.item-price {
+  flex-basis: 10%;
+  text-align: center;
+}
+
+.item-delete {
+  flex-basis: 10%;
+  text-align: right;
+}
+
+.items-container {
+  min-width: 400px;
+  border-bottom: 0.5px solid black;
+}
+
+.checkout-text {
+  min-width: 400px;
 }
